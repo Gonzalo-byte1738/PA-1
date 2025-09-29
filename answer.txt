@@ -1,0 +1,22 @@
+I tracked the time it took to transfer a large, 100MB file by  first truncating the file into BIMDC and using the time ./client -f test.bin command.
+the real time was 30.188s
+the user time was 8.483s
+the system time was 38.029 s
+
+the main bottleneck is the fact there are many read and write procedures between the client and the server. Moreover, each read and write procedure is limited to the MAX_MESSAGE. As a result the many number of switches slows the transfer procedure.
+
+These are some more points of different sized files and how long they took to transfer.
+Mega Bytes	time (real) seconds
+0.00001		0.195
+0.0001		0.171
+0.1		0.298
+1		0.518
+10		4.203
+30		7.764
+50		14.974
+60		16.134
+80		21.12
+100		30.188
+
+
+
